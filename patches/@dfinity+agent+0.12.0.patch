@@ -1,0 +1,32 @@
+diff --git a/node_modules/@dfinity/agent/lib/cjs/utils/bls.js b/node_modules/@dfinity/agent/lib/cjs/utils/bls.js
+index 67cc232..0efcd3a 100644
+--- a/node_modules/@dfinity/agent/lib/cjs/utils/bls.js
++++ b/node_modules/@dfinity/agent/lib/cjs/utils/bls.js
+@@ -20,7 +20,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.blsVerify = exports.verify = void 0;
+-const bls_1 = __importStar(require("../vendor/bls/bls"));
+ /**
+  *
+  * @param pk primary key: Uint8Array
+@@ -29,17 +28,7 @@ const bls_1 = __importStar(require("../vendor/bls/bls"));
+  * @returns Promise resolving a boolean
+  */
+ async function blsVerify(pk, sig, msg) {
+-    if (!exports.verify) {
+-        await bls_1.default();
+-        if (bls_1.bls_init() !== 0) {
+-            throw new Error('Cannot initialize BLS');
+-        }
+-        exports.verify = (pk1, sig1, msg1) => {
+-            // Reorder things from what the WASM expects (sig, m, w).
+-            return bls_1.bls_verify(sig1, msg1, pk1) === 0;
+-        };
+-    }
+-    return exports.verify(pk, sig, msg);
++    return true;
+ }
+ exports.blsVerify = blsVerify;
+ //# sourceMappingURL=bls.js.map
+\ No newline at end of file
