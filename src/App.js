@@ -23,7 +23,7 @@ import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 import bip39 from 'react-native-bip39';
 import {Secp256Identity} from './utils/identity/Secp256Identity';
 import {createCounterActor} from './utils/actors/counterActor';
-import { HttpAgent } from "@dfinity/agent";
+import {HttpAgent} from '@dfinity/agent';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -71,18 +71,17 @@ const App: () => Node = () => {
 
   const generateIdentity = React.useCallback(async () => {
     try {
-        const secp256Identity = new Secp256Identity();
-        const identity = await secp256Identity.createAccount(mnemonic);
-        console.log('identity', identity);
+      const secp256Identity = new Secp256Identity();
+      const identity = await secp256Identity.createAccount(mnemonic);
+      console.log('identity', identity);
 
+      actor.current = await createCounterActor();
+      const result = await actor.current.get();
 
-        actor.current = await createCounterActor();
-        const result = await actor.current.get();
-
-        setIdentity(identity);
-        setCounter(BigInt(result).toLocaleString());
+      setIdentity(identity);
+      setCounter(BigInt(result).toLocaleString());
     } catch (e) {
-        console.error('Error while generating identity', e);
+      console.error('Error while generating identity', e);
     }
   }, [mnemonic]);
 
@@ -90,13 +89,13 @@ const App: () => Node = () => {
     const counterActor = actor.current;
 
     if (counterActor != null) {
-        await counterActor.inc();
-        const result = await counterActor.get();
-        console.log('result', result);
+      await counterActor.inc();
+      const result = await counterActor.get();
+      console.log('result', result);
 
-        setCounter(BigInt(result).toLocaleString());
+      setCounter(BigInt(result).toLocaleString());
     }
-  }, [identity]);
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -134,10 +133,11 @@ const App: () => Node = () => {
             </>
           )}
           {identity != null && actor.current != null && (
-              <Section title="Counter">
-                Perform counter canister request {'\n'}Current counter: {counter} {'\n'}
-                <Button title="Increase" onPress={increaseCounterRequest} />
-              </Section>
+            <Section title="Counter">
+              Perform counter canister request {'\n'}Current counter: {counter}{' '}
+              {'\n'}
+              <Button title="Increase" onPress={increaseCounterRequest} />
+            </Section>
           )}
         </View>
       </ScrollView>

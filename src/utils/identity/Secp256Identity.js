@@ -25,10 +25,10 @@ export class Secp256Identity {
     }
 
     const index = subAccount || 0;
-console.log(index, mnemonic);
-const keyPair = this.createSecp256K1KeyPair(mnemonic, index);
-console.log(keyPair);
-const identity = Secp256k1KeyIdentity.fromKeyPair(
+    console.log(index, mnemonic);
+    const keyPair = this.createSecp256K1KeyPair(mnemonic, index);
+    console.log(keyPair);
+    const identity = Secp256k1KeyIdentity.fromKeyPair(
       keyPair.publicKey.toRaw(),
       keyPair.secretKey,
     );

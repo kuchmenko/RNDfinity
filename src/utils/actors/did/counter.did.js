@@ -1,8 +1,10 @@
-export const CounterDID = ({ IDL }) => {
+export const CounterDID = ({IDL}) => {
   return IDL.Service({
-    'get' : IDL.Func([], [IDL.Nat], ['query']),
-    'inc' : IDL.Func([], [], []),
-    'set' : IDL.Func([IDL.Nat], [], []),
+    get: IDL.Func([], [IDL.Nat], ['query']),
+    inc: IDL.Func([], [], []),
+    set: IDL.Func([IDL.Nat], [], []),
   });
 };
-export const init = ({ IDL }) => { return []; };
+export const init = ({IDL}) => {
+  return [];
+};

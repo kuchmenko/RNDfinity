@@ -23,15 +23,17 @@
 //
 // // If using the crypto shim, uncomment the following line to ensure
 // // crypto is loaded first, so it can populate global.crypto
-require('crypto')
+require('crypto');
 import 'react-native-url-polyfill/auto';
 import 'react-native-get-random-values';
 
-import { polyfill as polyfillBase64 } from 'react-native-polyfill-globals/src/base64';
-import { polyfill as polyfillEncoding } from 'react-native-polyfill-globals/src/encoding';
-import { polyfill as polyfillReadableStream } from 'react-native-polyfill-globals/src/readable-stream';
-import { polyfill as polyfillURL } from 'react-native-polyfill-globals/src/url';
-import { polyfill as polyfillFetch } from 'react-native-polyfill-globals/src/fetch';
-import { polyfill as polyfillCrypto } from 'react-native-polyfill-globals/src/crypto';
+import {polyfill as polyfillBase64} from 'react-native-polyfill-globals/src/base64';
+import {polyfill as polyfillEncoding} from 'react-native-polyfill-globals/src/encoding';
+import {polyfill as polyfillReadableStream} from 'react-native-polyfill-globals/src/readable-stream';
+import {polyfill as polyfillURL} from 'react-native-polyfill-globals/src/url';
+import {polyfill as polyfillFetch} from 'react-native-polyfill-globals/src/fetch';
+import {polyfill as polyfillCrypto} from 'react-native-polyfill-globals/src/crypto';
 
-if (typeof BigInt === 'undefined') global.BigInt = require('big-integer')
+if (typeof BigInt === 'undefined') {
+  global.BigInt = require('big-integer');
+}
