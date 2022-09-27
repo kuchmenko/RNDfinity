@@ -6,7 +6,7 @@ export const createCounterActor = async identity => {
   try {
     const host = Platform.select({
       ios: 'http://localhost:8000',
-      android: 'http://localhost:8000',
+      android: 'http://10.0.2.2:8000',
     });
 
     const agent = new HttpAgent({
